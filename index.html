@@ -363,73 +363,89 @@
       }
 
       .product-visual {
-        min-height: 30rem;
+        min-height: 34rem;
         display: grid;
-        place-items: center;
-        perspective: 1100px;
-      }
-
-      .device {
-        width: min(34rem, 100%);
-        aspect-ratio: 1.38;
-        padding: 0.8rem;
-        border: 1px solid rgba(255, 255, 255, 0.24);
-        border-radius: 8px;
-        background: linear-gradient(135deg, #20242a, #050505 42%, #afb7c2);
-        box-shadow:
-          inset 0 0 0 1px rgba(255, 255, 255, 0.16),
-          0 34px 110px rgba(0, 0, 0, 0.58);
-        transform: rotateY(-14deg) rotateX(7deg);
-        animation: float 4.8s ease-in-out infinite;
-      }
-
-      .device-top {
-        height: 1.55rem;
-        display: flex;
-        gap: 0.4rem;
         align-items: center;
       }
 
-      .device-top span {
-        width: 0.48rem;
-        height: 0.48rem;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.6);
-      }
-
-      .screen {
-        height: calc(100% - 1.55rem);
+      .newtv-showcase {
+        position: relative;
         display: grid;
-        place-items: center;
-        align-content: center;
-        gap: 0.55rem;
-        border-radius: 6px;
-        background:
-          linear-gradient(120deg, rgba(255, 255, 255, 0.14), transparent 34%),
-          radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.16), transparent 12rem),
-          #050505;
+        grid-template-columns: minmax(0, 1fr) minmax(7.5rem, 0.38fr);
+        gap: clamp(0.75rem, 2vw, 1rem);
+        width: min(44rem, 100%);
+        isolation: isolate;
       }
 
-      .screen strong {
-        font-size: clamp(2.4rem, 6vw, 5rem);
-        letter-spacing: 0;
+      .newtv-shot {
+        position: relative;
+        overflow: hidden;
+        margin: 0;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 8px;
+        background: #08090b;
+        box-shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
       }
 
-      .screen small {
-        color: var(--chrome);
-        letter-spacing: 0.22rem;
+      .newtv-shot::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient(125deg, rgba(255, 255, 255, 0.18), transparent 28%, transparent 72%, rgba(255, 255, 255, 0.08));
+      }
+
+      .newtv-shot img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .newtv-shot figcaption {
+        position: absolute;
+        left: 0.8rem;
+        bottom: 0.8rem;
+        z-index: 2;
+        padding: 0.45rem 0.65rem;
+        color: rgba(245, 247, 250, 0.9);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.12rem;
         text-transform: uppercase;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 6px;
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(12px);
       }
 
-      .play-mark {
-        width: 4rem;
-        aspect-ratio: 1;
+      .newtv-shot.hero-shot {
+        aspect-ratio: 1200 / 540;
+      }
+
+      .newtv-phone-stack {
         display: grid;
-        place-items: center;
-        color: #050505;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #fff, #9ea6b0);
-        box-shadow: 0 0 48px rgba(255, 255, 255, 0.25);
+        grid-template-columns: 1fr;
+        gap: clamp(0.75rem, 2vw, 1rem);
+      }
+
+      .newtv-phone-stack .newtv-shot {
+        aspect-ratio: 324 / 720;
+      }
+
+      .newtv-secondary {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(0.75rem, 2vw, 1rem);
+      }
+
+      .newtv-secondary .newtv-shot {
+        aspect-ratio: 1200 / 540;
+      }
+
+      .newtv-secondary .admin-shot {
+        aspect-ratio: 1200 / 748;
       }
 
       .product-copy h2 {
@@ -549,16 +565,6 @@
         }
       }
 
-      @keyframes float {
-        0%,
-        100% {
-          transform: rotateY(-14deg) rotateX(7deg) translateY(0);
-        }
-        50% {
-          transform: rotateY(-9deg) rotateX(5deg) translateY(-18px);
-        }
-      }
-
       @media (prefers-reduced-motion: reduce) {
         *,
         *::before,
@@ -637,14 +643,6 @@
           margin-top: 3rem;
         }
 
-        .product-visual {
-          min-height: 22rem;
-        }
-
-        .device {
-          transform: none;
-        }
-
         .contact-actions,
         .contact .button {
           width: 100%;
@@ -653,6 +651,19 @@
         .contact .button {
           justify-content: center;
           overflow-wrap: anywhere;
+        }
+
+        .product-visual {
+          min-height: auto;
+        }
+
+        .newtv-showcase,
+        .newtv-secondary {
+          grid-template-columns: 1fr;
+        }
+
+        .newtv-phone-stack {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
       }
     </style>
@@ -741,16 +752,59 @@
 
       <section class="product-band" id="newtv">
         <div class="product-visual">
-          <div class="device">
-            <div class="device-top">
-              <span></span>
-              <span></span>
-              <span></span>
+          <div class="newtv-showcase" aria-label="Pantallas de NewTV">
+            <figure class="newtv-shot hero-shot">
+              <img
+                src="public/newtv/home-wide.jpg"
+                width="1200"
+                height="540"
+                alt="Pantalla principal de NewTV con canales en vivo"
+              />
+              <figcaption>Inicio</figcaption>
+            </figure>
+            <div class="newtv-phone-stack">
+              <figure class="newtv-shot">
+                <img
+                  src="public/newtv/live-list.jpg"
+                  width="324"
+                  height="720"
+                  loading="lazy"
+                  alt="Lista de canales en vivo dentro de NewTV"
+                />
+                <figcaption>Live</figcaption>
+              </figure>
+              <figure class="newtv-shot">
+                <img
+                  src="public/newtv/profiles.jpg"
+                  width="324"
+                  height="720"
+                  loading="lazy"
+                  alt="Selector de perfiles de NewTV"
+                />
+                <figcaption>Perfiles</figcaption>
+              </figure>
             </div>
-            <div class="screen">
-              <span class="play-mark">PLAY</span>
-              <strong>NewTV</strong>
-              <small>Entertainment platform</small>
+            <div class="newtv-secondary">
+              <figure class="newtv-shot">
+                <img
+                  src="public/newtv/player-wide.jpg"
+                  width="1200"
+                  height="540"
+                  loading="lazy"
+                  alt="Reproductor de canal en NewTV"
+                />
+                <figcaption>Player</figcaption>
+              </figure>
+              <figure class="newtv-shot admin-shot">
+                <img
+                  src="public/newtv/admin-panel.jpg"
+                  width="1200"
+                  height="748"
+                  loading="lazy"
+                  alt="Panel de administracion de NewTV"
+                />
+                <figcaption>Admin</figcaption>
+              </figure>
             </div>
           </div>
         </div>
