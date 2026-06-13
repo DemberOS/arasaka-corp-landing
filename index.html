@@ -466,6 +466,20 @@
         letter-spacing: 0.12rem;
       }
 
+      .product-features {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.8rem;
+        margin-top: 1.4rem;
+      }
+
+      .product-features span {
+        padding: 0.9rem 1rem;
+        color: rgba(245, 247, 250, 0.78);
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
       .steps {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -504,6 +518,14 @@
 
       .contact h2 {
         font-size: clamp(2rem, 4vw, 4rem);
+      }
+
+      .contact-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 0.8rem;
+        min-width: min(100%, 28rem);
       }
 
       @keyframes chrome {
@@ -594,7 +616,8 @@
 
         .service-grid,
         .steps,
-        .metrics {
+        .metrics,
+        .product-features {
           grid-template-columns: 1fr;
         }
 
@@ -612,6 +635,11 @@
 
         .device {
           transform: none;
+        }
+
+        .contact-actions,
+        .contact .button {
+          width: 100%;
         }
 
         .contact .button {
@@ -639,7 +667,7 @@
 
         <div class="hero-content">
           <div class="mark">
-            <img src="public/arasaka-logo.png" alt="Arasaka Concept Corp" />
+            <img src="public/arasaka-logo.png" alt="Arasaka Corp" />
           </div>
           <p class="eyebrow">Software general, productos digitales y operaciones de alto rendimiento</p>
           <h1>Arasaka Corp</h1>
@@ -720,11 +748,17 @@
         </div>
         <div class="product-copy">
           <p class="section-kicker">Producto destacado</p>
-          <h2>NewTV como muestra de una vision: contenido, tecnologia y experiencia en una sola plataforma.</h2>
+          <h2>NewTV, una plataforma propia para llevar entretenimiento digital con experiencia premium.</h2>
           <p>
-            Una base visual para presentar NewTV como producto propio. Cuando me pases detalles, puedo convertir
-            esta seccion en una demostracion con planes, pantallas, beneficios y enlace directo.
+            NewTV es el producto de Arasaka Corp para presentar canales, contenido y experiencias digitales en una
+            interfaz moderna, rapida y preparada para crecer con nuevas funciones.
           </p>
+          <div class="product-features">
+            <span>Catalogos, canales y contenido destacado</span>
+            <span>Experiencia optimizada para TV, web y mobile</span>
+            <span>Base lista para suscripciones o accesos privados</span>
+            <span>Panel administrativo y analiticas en roadmap</span>
+          </div>
           <div class="metrics">
             <div>
               <strong>24/7</strong>
@@ -770,9 +804,17 @@
         <div>
           <p class="section-kicker">Contacto</p>
           <h2>Hablemos del sistema que quieres construir.</h2>
-          <p>Cuentanos la idea, el problema o el producto. Arasaka Corp se encarga de convertirlo en software.</p>
+          <p>Escribenos por WhatsApp o email. Arasaka Corp se encarga de convertir tu idea en software.</p>
         </div>
-        <a class="button primary" href="mailto:contacto@arasakacorp.com">contacto@arasakacorp.com -></a>
+        <div class="contact-actions">
+          <a
+            class="button primary"
+            href="https://wa.me/10000000000?text=Hola%20Arasaka%20Corp%2C%20quiero%20hablar%20sobre%20un%20proyecto"
+          >
+            WhatsApp ->
+          </a>
+          <a class="button ghost" href="mailto:contacto@arasakacorp.com">contacto@arasakacorp.com</a>
+        </div>
       </section>
     </main>
 
