@@ -567,6 +567,10 @@
           animation-iteration-count: 1 !important;
           scroll-behavior: auto !important;
         }
+
+        .metal-canvas {
+          display: none;
+        }
       }
 
       @media (max-width: 900px) {
@@ -591,6 +595,10 @@
         .hero {
           min-height: 100svh;
           padding-top: 6rem;
+        }
+
+        .metal-canvas {
+          opacity: 0.35;
         }
 
         .brand span {
@@ -821,13 +829,17 @@
     <script>
       const canvas = document.getElementById("metalCanvas");
       const context = canvas.getContext("2d");
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       let animationFrame;
       let width = 0;
       let height = 0;
       let tick = 0;
+      let lastFrame = 0;
+      let gradient;
+      const targetFrameMs = window.innerWidth < 700 ? 80 : 42;
 
       function resize() {
-        const ratio = Math.min(window.devicePixelRatio || 1, 2);
+        const ratio = Math.min(window.devicePixelRatio || 1, window.innerWidth < 700 ? 1 : 1.25);
         width = window.innerWidth;
         height = window.innerHeight;
         canvas.width = width * ratio;
@@ -835,25 +847,39 @@
         canvas.style.width = `${width}px`;
         canvas.style.height = `${height}px`;
         context.setTransform(ratio, 0, 0, ratio, 0, 0);
-      }
-
-      function draw() {
-        tick += 0.006;
-        context.clearRect(0, 0, width, height);
-
-        const gradient = context.createLinearGradient(0, 0, width, height);
+        gradient = context.createLinearGradient(0, 0, width, height);
         gradient.addColorStop(0, "rgba(245, 247, 250, 0.04)");
         gradient.addColorStop(0.42, "rgba(127, 135, 145, 0.12)");
         gradient.addColorStop(1, "rgba(255, 255, 255, 0.05)");
+      }
+
+      function paintBackground() {
+        context.clearRect(0, 0, width, height);
         context.fillStyle = gradient;
         context.fillRect(0, 0, width, height);
+      }
 
-        for (let i = 0; i < 9; i += 1) {
-          const radius = Math.max(width, height) * (0.18 + i * 0.015);
+      function draw(now = 0) {
+        if (document.hidden) {
+          animationFrame = window.requestAnimationFrame(draw);
+          return;
+        }
+
+        if (now - lastFrame < targetFrameMs) {
+          animationFrame = window.requestAnimationFrame(draw);
+          return;
+        }
+
+        lastFrame = now;
+        tick += 0.012;
+        paintBackground();
+
+        for (let i = 0; i < 4; i += 1) {
+          const radius = Math.max(width, height) * (0.2 + i * 0.035);
           const x = width * (0.48 + Math.sin(tick + i) * 0.12);
           const y = height * (0.45 + Math.cos(tick * 1.35 + i) * 0.08);
           const ring = context.createRadialGradient(x, y, 0, x, y, radius);
-          ring.addColorStop(0, `rgba(255,255,255,${0.09 - i * 0.006})`);
+          ring.addColorStop(0, `rgba(255,255,255,${0.085 - i * 0.012})`);
           ring.addColorStop(0.58, "rgba(134, 141, 152, 0.025)");
           ring.addColorStop(1, "rgba(0,0,0,0)");
           context.fillStyle = ring;
@@ -864,8 +890,8 @@
 
         context.strokeStyle = "rgba(255,255,255,0.15)";
         context.lineWidth = 1;
-        for (let i = 0; i < 28; i += 1) {
-          const y = ((i * 59 + tick * 900) % (height + 160)) - 80;
+        for (let i = 0; i < 10; i += 1) {
+          const y = ((i * 126 + tick * 700) % (height + 180)) - 90;
           context.beginPath();
           context.moveTo(width * 0.08, y);
           context.bezierCurveTo(width * 0.34, y - 60, width * 0.62, y + 80, width * 0.94, y - 20);
@@ -876,7 +902,10 @@
       }
 
       resize();
-      draw();
+      paintBackground();
+      if (!reduceMotion) {
+        draw();
+      }
       window.addEventListener("resize", resize);
       window.addEventListener("beforeunload", () => window.cancelAnimationFrame(animationFrame));
     </script>
