@@ -1,0 +1,842 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Arasaka Corp desarrolla software a medida, plataformas digitales, automatizaciones y productos como NewTV."
+    />
+    <title>Arasaka Corp | Software de alto rendimiento</title>
+    <style>
+      :root {
+        color: #f5f7fa;
+        background: #030303;
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-synthesis: none;
+        text-rendering: geometricPrecision;
+        -webkit-font-smoothing: antialiased;
+        --black: #030303;
+        --ink: #0a0b0d;
+        --steel: #8d949f;
+        --silver: #e8ebef;
+        --chrome: #b8c0ca;
+        --line: rgba(255, 255, 255, 0.16);
+        --muted: rgba(245, 247, 250, 0.68);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        overflow-x: hidden;
+        background:
+          radial-gradient(circle at 50% -10%, rgba(255, 255, 255, 0.16), transparent 34rem),
+          linear-gradient(180deg, #030303 0%, #0a0b0d 48%, #050505 100%);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 96svh;
+        display: grid;
+        place-items: center;
+        padding: 7rem clamp(1rem, 4vw, 4rem) 4.5rem;
+        isolation: isolate;
+        overflow: hidden;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .metal-canvas {
+        position: absolute;
+        inset: 0;
+        z-index: -3;
+        opacity: 0.72;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        background:
+          linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: 84px 84px;
+        mask-image: radial-gradient(circle at center, black, transparent 72%);
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 0;
+        height: 38%;
+        z-index: -1;
+        background: linear-gradient(180deg, transparent, rgba(3, 3, 3, 0.95));
+      }
+
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.9rem clamp(1rem, 4vw, 4rem);
+        background: rgba(3, 3, 3, 0.52);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        min-width: 0;
+        color: var(--silver);
+        font-size: 0.82rem;
+        letter-spacing: 0.18rem;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .brand img {
+        width: 2.35rem;
+        height: 2.35rem;
+        object-fit: cover;
+        border-radius: 50%;
+        filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.35));
+      }
+
+      .nav-links {
+        display: flex;
+        gap: clamp(0.85rem, 3vw, 2.2rem);
+        font-size: 0.78rem;
+        letter-spacing: 0.14rem;
+        text-transform: uppercase;
+        color: rgba(245, 247, 250, 0.7);
+      }
+
+      .nav-links a {
+        transition: color 180ms ease;
+      }
+
+      .nav-links a:hover {
+        color: white;
+      }
+
+      .hero-content {
+        width: min(980px, 100%);
+        text-align: center;
+        animation: rise 900ms ease both;
+      }
+
+      .mark {
+        width: clamp(12rem, 28vw, 21rem);
+        aspect-ratio: 1.52;
+        margin: 0 auto 1.25rem;
+        display: grid;
+        place-items: center;
+        filter: drop-shadow(0 0 42px rgba(255, 255, 255, 0.2));
+      }
+
+      .mark img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        mix-blend-mode: screen;
+      }
+
+      .eyebrow,
+      .section-kicker {
+        margin: 0;
+        color: var(--chrome);
+        font-size: clamp(0.72rem, 1.2vw, 0.88rem);
+        letter-spacing: 0.18rem;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        overflow-wrap: break-word;
+      }
+
+      h1 {
+        margin: 0.2rem 0 1rem;
+        font-size: clamp(3.3rem, 11vw, 10rem);
+        line-height: 0.86;
+        font-weight: 700;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        background: linear-gradient(100deg, #ffffff 0%, #7f8790 36%, #ffffff 54%, #aab2bc 78%, #ffffff 100%);
+        background-size: 240% 100%;
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: chrome 5s ease-in-out infinite;
+      }
+
+      .lead {
+        width: min(740px, 100%);
+        margin: 0 auto;
+        color: rgba(245, 247, 250, 0.76);
+        font-size: clamp(1.04rem, 2vw, 1.35rem);
+        line-height: 1.65;
+      }
+
+      .hero-actions {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        margin-top: 2.1rem;
+      }
+
+      .button {
+        min-height: 3.2rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.65rem;
+        padding: 0.9rem 1.2rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        font-weight: 700;
+        letter-spacing: 0.02rem;
+        transition:
+          transform 180ms ease,
+          border-color 180ms ease,
+          background 180ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+      }
+
+      .button.primary {
+        color: #040405;
+        border-color: white;
+        background: linear-gradient(110deg, #ffffff, #9ea6b0 42%, #ffffff);
+        box-shadow: 0 20px 70px rgba(255, 255, 255, 0.16);
+      }
+
+      .button.ghost {
+        color: var(--silver);
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(18px);
+      }
+
+      .ticker {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 1rem;
+        display: flex;
+        justify-content: center;
+        gap: clamp(1rem, 5vw, 4rem);
+        padding: 0 1rem;
+        color: rgba(245, 247, 250, 0.46);
+        font-size: 0.75rem;
+        letter-spacing: 0.16rem;
+        text-transform: uppercase;
+      }
+
+      .section {
+        width: min(1180px, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: clamp(4.8rem, 10vw, 8rem) 0;
+      }
+
+      .intro {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.75fr);
+        gap: clamp(2rem, 6vw, 5rem);
+        align-items: end;
+      }
+
+      h2 {
+        margin: 0.6rem 0 0;
+        font-size: clamp(2rem, 5vw, 4.6rem);
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      .intro > p,
+      .product-copy p,
+      .contact p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.75;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .service-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+
+      .service-card {
+        min-height: 19rem;
+        padding: 1.45rem;
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+          #08090b;
+        transition:
+          transform 180ms ease,
+          background 180ms ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-0.35rem);
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.03)),
+          #0c0d10;
+      }
+
+      .service-icon {
+        width: 2rem;
+        height: 2rem;
+        display: grid;
+        place-items: center;
+        color: #060606;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #ffffff, #9ea6b0);
+        font-size: 1rem;
+        font-weight: 900;
+      }
+
+      .service-card h3 {
+        margin: 5rem 0 0.8rem;
+        font-size: 1.05rem;
+      }
+
+      .service-card p,
+      .steps span {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .product-band {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(20rem, 0.95fr);
+        gap: clamp(2rem, 6vw, 5rem);
+        align-items: center;
+        padding: clamp(5rem, 10vw, 8rem) clamp(1rem, 5vw, 5rem);
+        border-block: 1px solid var(--line);
+        background:
+          linear-gradient(90deg, rgba(255, 255, 255, 0.06), transparent 44%),
+          radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.11), transparent 25rem),
+          #050607;
+      }
+
+      .product-visual {
+        min-height: 30rem;
+        display: grid;
+        place-items: center;
+        perspective: 1100px;
+      }
+
+      .device {
+        width: min(34rem, 100%);
+        aspect-ratio: 1.38;
+        padding: 0.8rem;
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        border-radius: 8px;
+        background: linear-gradient(135deg, #20242a, #050505 42%, #afb7c2);
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.16),
+          0 34px 110px rgba(0, 0, 0, 0.58);
+        transform: rotateY(-14deg) rotateX(7deg);
+        animation: float 4.8s ease-in-out infinite;
+      }
+
+      .device-top {
+        height: 1.55rem;
+        display: flex;
+        gap: 0.4rem;
+        align-items: center;
+      }
+
+      .device-top span {
+        width: 0.48rem;
+        height: 0.48rem;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.6);
+      }
+
+      .screen {
+        height: calc(100% - 1.55rem);
+        display: grid;
+        place-items: center;
+        align-content: center;
+        gap: 0.55rem;
+        border-radius: 6px;
+        background:
+          linear-gradient(120deg, rgba(255, 255, 255, 0.14), transparent 34%),
+          radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.16), transparent 12rem),
+          #050505;
+      }
+
+      .screen strong {
+        font-size: clamp(2.4rem, 6vw, 5rem);
+        letter-spacing: 0;
+      }
+
+      .screen small {
+        color: var(--chrome);
+        letter-spacing: 0.22rem;
+        text-transform: uppercase;
+      }
+
+      .play-mark {
+        width: 4rem;
+        aspect-ratio: 1;
+        display: grid;
+        place-items: center;
+        color: #050505;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #fff, #9ea6b0);
+        box-shadow: 0 0 48px rgba(255, 255, 255, 0.25);
+      }
+
+      .product-copy h2 {
+        font-size: clamp(2rem, 4vw, 3.5rem);
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1px;
+        margin-top: 2rem;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+
+      .metrics div {
+        padding: 1rem;
+        background: rgba(0, 0, 0, 0.35);
+      }
+
+      .metrics strong,
+      .metrics span {
+        display: block;
+      }
+
+      .metrics strong {
+        font-size: clamp(1.5rem, 3vw, 2.4rem);
+      }
+
+      .metrics span {
+        color: var(--muted);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12rem;
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .steps div {
+        min-height: 14rem;
+        display: grid;
+        align-content: space-between;
+        gap: 1rem;
+        padding: 1.25rem;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.045);
+      }
+
+      .steps strong {
+        font-size: 1.05rem;
+      }
+
+      .contact {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+        padding: clamp(3rem, 7vw, 5rem) clamp(1rem, 5vw, 5rem);
+        border-top: 1px solid var(--line);
+        background:
+          linear-gradient(110deg, rgba(255, 255, 255, 0.09), transparent 55%),
+          #020202;
+      }
+
+      .contact > div {
+        max-width: 760px;
+      }
+
+      .contact h2 {
+        font-size: clamp(2rem, 4vw, 4rem);
+      }
+
+      @keyframes chrome {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(22px) scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: rotateY(-14deg) rotateX(7deg) translateY(0);
+        }
+        50% {
+          transform: rotateY(-9deg) rotateX(5deg) translateY(-18px);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 1ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      @media (max-width: 900px) {
+        .intro,
+        .product-band {
+          grid-template-columns: 1fr;
+        }
+
+        .service-grid,
+        .steps {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .section-head,
+        .contact {
+          align-items: start;
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .hero {
+          min-height: 100svh;
+          padding-top: 6rem;
+        }
+
+        .brand span {
+          display: none;
+        }
+
+        .nav-links {
+          gap: 0.75rem;
+          font-size: 0.66rem;
+          letter-spacing: 0.08rem;
+        }
+
+        .hero-actions,
+        .button {
+          width: 100%;
+        }
+
+        .ticker {
+          justify-content: flex-start;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+
+        .service-grid,
+        .steps,
+        .metrics {
+          grid-template-columns: 1fr;
+        }
+
+        .service-card {
+          min-height: 15rem;
+        }
+
+        .service-card h3 {
+          margin-top: 3rem;
+        }
+
+        .product-visual {
+          min-height: 22rem;
+        }
+
+        .device {
+          transform: none;
+        }
+
+        .contact .button {
+          justify-content: center;
+          overflow-wrap: anywhere;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero" id="inicio">
+        <canvas class="metal-canvas" id="metalCanvas" aria-hidden="true"></canvas>
+        <nav class="nav" aria-label="Principal">
+          <a class="brand" href="#inicio" aria-label="Arasaka Corp inicio">
+            <img src="public/arasaka-logo.png" alt="" />
+            <span>Arasaka Corp</span>
+          </a>
+          <div class="nav-links">
+            <a href="#servicios">Servicios</a>
+            <a href="#newtv">NewTV</a>
+            <a href="#contacto">Contacto</a>
+          </div>
+        </nav>
+
+        <div class="hero-content">
+          <div class="mark">
+            <img src="public/arasaka-logo.png" alt="Arasaka Concept Corp" />
+          </div>
+          <p class="eyebrow">Software general, productos digitales y operaciones de alto rendimiento</p>
+          <h1>Arasaka Corp</h1>
+          <p class="lead">
+            Creamos sistemas precisos, veloces y elegantes para empresas que necesitan convertir ideas en
+            plataformas listas para crecer.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#contacto">Iniciar proyecto -></a>
+            <a class="button ghost" href="#newtv">Ver NewTV</a>
+          </div>
+        </div>
+
+        <div class="ticker" aria-label="Capacidades">
+          <span>Web Apps</span>
+          <span>Mobile</span>
+          <span>Streaming</span>
+          <span>AI Automation</span>
+          <span>Cloud</span>
+          <span>DevOps</span>
+        </div>
+      </section>
+
+      <section class="section intro">
+        <div>
+          <p class="section-kicker">Ingenieria con acabado premium</p>
+          <h2>Construimos tecnologia que se siente tan pulida como un auto de lujo.</h2>
+        </div>
+        <p>
+          Desde productos completos hasta modulos criticos, trabajamos estrategia, diseno, desarrollo e
+          infraestructura con una mirada obsesiva por velocidad, estabilidad y experiencia.
+        </p>
+      </section>
+
+      <section class="section services" id="servicios">
+        <div class="section-head">
+          <p class="section-kicker">Servicios</p>
+          <h2>Del concepto a produccion.</h2>
+        </div>
+        <div class="service-grid">
+          <article class="service-card">
+            <span class="service-icon">&lt;/&gt;</span>
+            <h3>Software a medida</h3>
+            <p>Aplicaciones web, moviles y paneles internos construidos alrededor del flujo real de tu negocio.</p>
+          </article>
+          <article class="service-card">
+            <span class="service-icon">TV</span>
+            <h3>Plataformas streaming</h3>
+            <p>Arquitectura, interfaces y operaciones para experiencias tipo NewTV con rendimiento estable.</p>
+          </article>
+          <article class="service-card">
+            <span class="service-icon">AI</span>
+            <h3>Automatizacion inteligente</h3>
+            <p>Integraciones, procesos asistidos por IA y herramientas que reducen trabajo repetitivo.</p>
+          </article>
+          <article class="service-card">
+            <span class="service-icon">UP</span>
+            <h3>Infraestructura confiable</h3>
+            <p>Despliegues, observabilidad, seguridad y escalamiento para productos que no pueden fallar.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="product-band" id="newtv">
+        <div class="product-visual">
+          <div class="device">
+            <div class="device-top">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="screen">
+              <span class="play-mark">PLAY</span>
+              <strong>NewTV</strong>
+              <small>Entertainment platform</small>
+            </div>
+          </div>
+        </div>
+        <div class="product-copy">
+          <p class="section-kicker">Producto destacado</p>
+          <h2>NewTV como muestra de una vision: contenido, tecnologia y experiencia en una sola plataforma.</h2>
+          <p>
+            Una base visual para presentar NewTV como producto propio. Cuando me pases detalles, puedo convertir
+            esta seccion en una demostracion con planes, pantallas, beneficios y enlace directo.
+          </p>
+          <div class="metrics">
+            <div>
+              <strong>24/7</strong>
+              <span>operacion digital</span>
+            </div>
+            <div>
+              <strong>API</strong>
+              <span>first architecture</span>
+            </div>
+            <div>
+              <strong>UX</strong>
+              <span>premium by default</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section process">
+        <div class="section-head">
+          <p class="section-kicker">Metodo</p>
+          <h2>Un proceso claro para productos ambiciosos.</h2>
+        </div>
+        <div class="steps">
+          <div>
+            <span class="service-icon">01</span>
+            <strong>Arquitectura</strong>
+            <span>Definimos alcance, flujos, datos y la estructura tecnica del producto.</span>
+          </div>
+          <div>
+            <span class="service-icon">02</span>
+            <strong>Interfaz</strong>
+            <span>Disenamos una experiencia visual precisa, moderna y facil de operar.</span>
+          </div>
+          <div>
+            <span class="service-icon">03</span>
+            <strong>Produccion</strong>
+            <span>Desarrollamos, desplegamos, medimos y evolucionamos con ciclos cortos.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact" id="contacto">
+        <div>
+          <p class="section-kicker">Contacto</p>
+          <h2>Hablemos del sistema que quieres construir.</h2>
+          <p>Cuentanos la idea, el problema o el producto. Arasaka Corp se encarga de convertirlo en software.</p>
+        </div>
+        <a class="button primary" href="mailto:contacto@arasakacorp.com">contacto@arasakacorp.com -></a>
+      </section>
+    </main>
+
+    <script>
+      const canvas = document.getElementById("metalCanvas");
+      const context = canvas.getContext("2d");
+      let animationFrame;
+      let width = 0;
+      let height = 0;
+      let tick = 0;
+
+      function resize() {
+        const ratio = Math.min(window.devicePixelRatio || 1, 2);
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width * ratio;
+        canvas.height = height * ratio;
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
+        context.setTransform(ratio, 0, 0, ratio, 0, 0);
+      }
+
+      function draw() {
+        tick += 0.006;
+        context.clearRect(0, 0, width, height);
+
+        const gradient = context.createLinearGradient(0, 0, width, height);
+        gradient.addColorStop(0, "rgba(245, 247, 250, 0.04)");
+        gradient.addColorStop(0.42, "rgba(127, 135, 145, 0.12)");
+        gradient.addColorStop(1, "rgba(255, 255, 255, 0.05)");
+        context.fillStyle = gradient;
+        context.fillRect(0, 0, width, height);
+
+        for (let i = 0; i < 9; i += 1) {
+          const radius = Math.max(width, height) * (0.18 + i * 0.015);
+          const x = width * (0.48 + Math.sin(tick + i) * 0.12);
+          const y = height * (0.45 + Math.cos(tick * 1.35 + i) * 0.08);
+          const ring = context.createRadialGradient(x, y, 0, x, y, radius);
+          ring.addColorStop(0, `rgba(255,255,255,${0.09 - i * 0.006})`);
+          ring.addColorStop(0.58, "rgba(134, 141, 152, 0.025)");
+          ring.addColorStop(1, "rgba(0,0,0,0)");
+          context.fillStyle = ring;
+          context.beginPath();
+          context.arc(x, y, radius, 0, Math.PI * 2);
+          context.fill();
+        }
+
+        context.strokeStyle = "rgba(255,255,255,0.15)";
+        context.lineWidth = 1;
+        for (let i = 0; i < 28; i += 1) {
+          const y = ((i * 59 + tick * 900) % (height + 160)) - 80;
+          context.beginPath();
+          context.moveTo(width * 0.08, y);
+          context.bezierCurveTo(width * 0.34, y - 60, width * 0.62, y + 80, width * 0.94, y - 20);
+          context.stroke();
+        }
+
+        animationFrame = window.requestAnimationFrame(draw);
+      }
+
+      resize();
+      draw();
+      window.addEventListener("resize", resize);
+      window.addEventListener("beforeunload", () => window.cancelAnimationFrame(animationFrame));
+    </script>
+  </body>
+</html>
