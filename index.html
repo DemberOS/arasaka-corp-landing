@@ -11,18 +11,22 @@
     <style>
       :root {
         color: #f5f7fa;
-        background: #030303;
+        background: #050914;
         font-family:
           Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         font-synthesis: none;
         text-rendering: geometricPrecision;
         -webkit-font-smoothing: antialiased;
-        --black: #030303;
-        --ink: #0a0b0d;
-        --steel: #8d949f;
+        --black: #030712;
+        --ink: #07101f;
+        --panel: #0b1528;
+        --panel-soft: #0f1f3a;
+        --blue: #5aa7ff;
+        --blue-soft: #8fc6ff;
+        --steel: #8fa4bf;
         --silver: #e8ebef;
-        --chrome: #b8c0ca;
-        --line: rgba(255, 255, 255, 0.16);
+        --chrome: #abc7e8;
+        --line: rgba(139, 183, 235, 0.18);
         --muted: rgba(245, 247, 250, 0.68);
       }
 
@@ -39,8 +43,8 @@
         min-width: 320px;
         overflow-x: hidden;
         background:
-          radial-gradient(circle at 50% -10%, rgba(255, 255, 255, 0.16), transparent 34rem),
-          linear-gradient(180deg, #030303 0%, #0a0b0d 48%, #050505 100%);
+          radial-gradient(circle at 50% -10%, rgba(62, 133, 226, 0.28), transparent 34rem),
+          linear-gradient(180deg, #050914 0%, #07101f 46%, #030712 100%);
       }
 
       a {
@@ -89,7 +93,7 @@
         inset: auto 0 0;
         height: 38%;
         z-index: -1;
-        background: linear-gradient(180deg, transparent, rgba(3, 3, 3, 0.95));
+        background: linear-gradient(180deg, transparent, rgba(5, 9, 20, 0.96));
       }
 
       .nav {
@@ -103,8 +107,8 @@
         justify-content: space-between;
         gap: 1rem;
         padding: 0.9rem clamp(1rem, 4vw, 4rem);
-        background: rgba(3, 3, 3, 0.52);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(5, 10, 24, 0.62);
+        border-bottom: 1px solid rgba(139, 183, 235, 0.14);
         backdrop-filter: blur(20px);
       }
 
@@ -189,7 +193,7 @@
         font-weight: 700;
         letter-spacing: 0;
         text-transform: uppercase;
-        background: linear-gradient(100deg, #ffffff 0%, #7f8790 36%, #ffffff 54%, #aab2bc 78%, #ffffff 100%);
+        background: linear-gradient(100deg, #ffffff 0%, #8fc6ff 34%, #ffffff 54%, #8fa4bf 78%, #ffffff 100%);
         background-size: 240% 100%;
         -webkit-background-clip: text;
         color: transparent;
@@ -234,15 +238,15 @@
       }
 
       .button.primary {
-        color: #040405;
-        border-color: white;
-        background: linear-gradient(110deg, #ffffff, #9ea6b0 42%, #ffffff);
-        box-shadow: 0 20px 70px rgba(255, 255, 255, 0.16);
+        color: #04101f;
+        border-color: rgba(185, 220, 255, 0.9);
+        background: linear-gradient(110deg, #ffffff, #8fc6ff 46%, #dceeff);
+        box-shadow: 0 20px 70px rgba(77, 154, 255, 0.2);
       }
 
       .button.ghost {
         color: var(--silver);
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(88, 157, 245, 0.08);
         backdrop-filter: blur(18px);
       }
 
@@ -310,8 +314,8 @@
         min-height: 19rem;
         padding: 1.45rem;
         background:
-          linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
-          #08090b;
+          linear-gradient(145deg, rgba(105, 171, 255, 0.12), rgba(255, 255, 255, 0.02)),
+          var(--panel);
         transition:
           transform 180ms ease,
           background 180ms ease;
@@ -320,8 +324,8 @@
       .service-card:hover {
         transform: translateY(-0.35rem);
         background:
-          linear-gradient(145deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.03)),
-          #0c0d10;
+          linear-gradient(145deg, rgba(105, 171, 255, 0.18), rgba(255, 255, 255, 0.03)),
+          var(--panel-soft);
       }
 
       .service-icon {
@@ -331,7 +335,7 @@
         place-items: center;
         color: #060606;
         border-radius: 50%;
-        background: linear-gradient(135deg, #ffffff, #9ea6b0);
+        background: linear-gradient(135deg, #ffffff, #78b7ff);
         font-size: 1rem;
         font-weight: 900;
       }
@@ -356,9 +360,8 @@
         padding: clamp(5rem, 10vw, 8rem) clamp(1rem, 5vw, 5rem);
         border-block: 1px solid var(--line);
         background:
-          linear-gradient(90deg, rgba(255, 255, 255, 0.06), transparent 44%),
-          radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.11), transparent 25rem),
-          #050607;
+          linear-gradient(90deg, rgba(69, 137, 226, 0.16), transparent 44%),
+          linear-gradient(145deg, #07101f 0%, #0b1730 48%, #030712 100%);
       }
 
       .product-visual {
@@ -374,11 +377,12 @@
         border: 1px solid rgba(255, 255, 255, 0.16);
         border-radius: 8px;
         background:
-          linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.025)),
-          rgba(4, 5, 7, 0.72);
+          linear-gradient(145deg, rgba(107, 172, 255, 0.14), rgba(255, 255, 255, 0.025)),
+          rgba(7, 16, 31, 0.8);
         box-shadow:
           inset 0 0 0 1px rgba(255, 255, 255, 0.06),
           0 34px 120px rgba(0, 0, 0, 0.48);
+        animation: blueBreath 6s ease-in-out infinite;
         isolation: isolate;
       }
 
@@ -388,7 +392,7 @@
         inset: 12% -6% auto 28%;
         height: 58%;
         z-index: -1;
-        background: radial-gradient(circle, rgba(82, 145, 255, 0.28), transparent 62%);
+        background: radial-gradient(circle, rgba(82, 145, 255, 0.26), transparent 62%);
         filter: blur(18px);
       }
 
@@ -398,7 +402,7 @@
         margin: 0;
         border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 8px;
-        background: #08090b;
+        background: #07101f;
         box-shadow: 0 20px 70px rgba(0, 0, 0, 0.44);
       }
 
@@ -447,12 +451,12 @@
         left: 0.85rem;
         z-index: 2;
         padding: 0.45rem 0.7rem;
-        color: #050607;
+        color: #04101f;
         font-size: 0.72rem;
         font-weight: 900;
         letter-spacing: 0.1rem;
         border-radius: 6px;
-        background: linear-gradient(135deg, #ffffff, #8fbfff);
+        background: linear-gradient(135deg, #ffffff, var(--blue-soft));
       }
 
       .newtv-phone-stack {
@@ -545,7 +549,152 @@
         padding: 0.9rem 1rem;
         color: rgba(245, 247, 250, 0.78);
         border: 1px solid var(--line);
+        background: rgba(91, 159, 255, 0.07);
+      }
+
+      .platform-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        margin-top: 1.35rem;
+      }
+
+      .platform-pills span,
+      .tech-stack span {
+        display: inline-flex;
+        align-items: center;
+        min-height: 2.25rem;
+        padding: 0.55rem 0.75rem;
+        color: rgba(245, 247, 250, 0.82);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.08rem;
+        text-transform: uppercase;
+        border: 1px solid rgba(139, 183, 235, 0.2);
+        border-radius: 8px;
+        background: rgba(7, 16, 31, 0.72);
+      }
+
+      .newtv-architecture {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+        gap: clamp(1rem, 3vw, 1.5rem);
+        margin-top: clamp(2rem, 5vw, 4rem);
+      }
+
+      .architecture-panel,
+      .security-panel {
+        position: relative;
+        overflow: hidden;
+        padding: clamp(1rem, 2.4vw, 1.35rem);
+        border: 1px solid rgba(139, 183, 235, 0.2);
+        border-radius: 8px;
+        background:
+          linear-gradient(150deg, rgba(90, 167, 255, 0.14), rgba(255, 255, 255, 0.025)),
+          rgba(7, 16, 31, 0.78);
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+        animation: rise 900ms ease both;
+      }
+
+      .architecture-panel h3,
+      .security-panel h3 {
+        margin: 0 0 1rem;
+        font-size: clamp(1.2rem, 2vw, 1.55rem);
+      }
+
+      .architecture-flow {
+        display: grid;
+        grid-template-columns:
+          minmax(6.4rem, 1fr) 1rem minmax(6.4rem, 1fr) 1rem minmax(6.4rem, 1fr) 1rem
+          minmax(6.4rem, 1fr) 1rem minmax(6.4rem, 1fr);
+        gap: 0.55rem;
+        align-items: stretch;
+      }
+
+      .flow-node {
+        display: grid;
+        place-items: center;
+        min-height: 5.8rem;
+        padding: 0.8rem;
+        text-align: center;
+        color: rgba(245, 247, 250, 0.86);
+        border: 1px solid rgba(139, 183, 235, 0.22);
+        border-radius: 8px;
+        background: rgba(4, 10, 22, 0.62);
+      }
+
+      .flow-node strong {
+        display: block;
+        font-size: 0.86rem;
+      }
+
+      .flow-node span {
+        display: block;
+        margin-top: 0.35rem;
+        color: rgba(245, 247, 250, 0.56);
+        font-size: 0.72rem;
+        line-height: 1.4;
+      }
+
+      .flow-arrow {
+        position: relative;
+        display: grid;
+        place-items: center;
+        color: var(--blue-soft);
+        font-weight: 900;
+      }
+
+      .flow-arrow::before {
+        content: "";
+        position: absolute;
+        left: 12%;
+        right: 12%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--blue), transparent);
+      }
+
+      .flow-arrow span {
+        position: relative;
+        z-index: 1;
+        padding: 0.25rem 0.35rem;
+        background: #07101f;
+      }
+
+      .security-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.75rem;
+      }
+
+      .security-grid div {
+        min-height: 8rem;
+        padding: 0.95rem;
+        border: 1px solid rgba(139, 183, 235, 0.18);
+        border-radius: 8px;
         background: rgba(255, 255, 255, 0.04);
+      }
+
+      .security-grid strong {
+        display: block;
+        margin-bottom: 0.55rem;
+      }
+
+      .security-grid span {
+        display: block;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .tech-stack {
+        grid-column: 1 / -1;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        padding: 1rem;
+        border: 1px solid rgba(139, 183, 235, 0.18);
+        border-radius: 8px;
+        background: rgba(4, 10, 22, 0.55);
       }
 
       .steps {
@@ -561,7 +710,7 @@
         gap: 1rem;
         padding: 1.25rem;
         border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.045);
+        background: rgba(91, 159, 255, 0.06);
       }
 
       .steps strong {
@@ -576,8 +725,8 @@
         padding: clamp(3rem, 7vw, 5rem) clamp(1rem, 5vw, 5rem);
         border-top: 1px solid var(--line);
         background:
-          linear-gradient(110deg, rgba(255, 255, 255, 0.09), transparent 55%),
-          #020202;
+          linear-gradient(110deg, rgba(90, 167, 255, 0.16), transparent 55%),
+          #030712;
       }
 
       .contact > div {
@@ -617,6 +766,20 @@
         }
       }
 
+      @keyframes blueBreath {
+        0%,
+        100% {
+          box-shadow:
+            inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+            0 34px 120px rgba(0, 0, 0, 0.48);
+        }
+        50% {
+          box-shadow:
+            inset 0 0 0 1px rgba(142, 197, 255, 0.12),
+            0 34px 130px rgba(72, 142, 236, 0.2);
+        }
+      }
+
       @media (prefers-reduced-motion: reduce) {
         *,
         *::before,
@@ -633,13 +796,33 @@
 
       @media (max-width: 900px) {
         .intro,
-        .product-band {
+        .product-band,
+        .newtv-architecture {
           grid-template-columns: 1fr;
         }
 
         .service-grid,
-        .steps {
+        .steps,
+        .security-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .architecture-flow {
+          grid-template-columns: 1fr;
+        }
+
+        .flow-arrow {
+          min-height: 1.5rem;
+        }
+
+        .flow-arrow::before {
+          left: 50%;
+          right: auto;
+          top: 0;
+          bottom: 0;
+          width: 1px;
+          height: auto;
+          background: linear-gradient(180deg, transparent, var(--blue), transparent);
         }
 
         .section-head,
@@ -683,7 +866,8 @@
         .service-grid,
         .steps,
         .metrics,
-        .product-features {
+        .product-features,
+        .security-grid {
           grid-template-columns: 1fr;
         }
 
@@ -889,30 +1073,98 @@
         </div>
         <div class="product-copy">
           <p class="section-kicker">Producto destacado</p>
-          <h2>NewTV, una plataforma propia para llevar entretenimiento digital con experiencia premium.</h2>
+          <h2>NewTV, una plataforma IPTV moderna, escalable y segura.</h2>
           <p>
-            NewTV es el producto de Arasaka Corp para presentar canales, contenido y experiencias digitales en una
-            interfaz moderna, rapida y preparada para crecer con nuevas funciones.
+            NewTV integra television en vivo, peliculas, series, Catch-Up, perfiles, favoritos, busqueda y guia EPG
+            sobre una arquitectura preparada para operar desde cientos hasta miles de usuarios concurrentes.
           </p>
+          <div class="platform-pills" aria-label="Plataformas soportadas por NewTV">
+            <span>Android</span>
+            <span>Android TV</span>
+            <span>Fire TV</span>
+            <span>Web</span>
+            <span>Smart TV</span>
+            <span>iOS futuro</span>
+          </div>
           <div class="product-features">
-            <span>Catalogos, canales y contenido destacado</span>
-            <span>Experiencia optimizada para TV, web y mobile</span>
-            <span>Base lista para suscripciones o accesos privados</span>
-            <span>Panel administrativo y analiticas en roadmap</span>
+            <span>Canales en vivo, VOD, peliculas, series y replay TV</span>
+            <span>Middleware con API REST para usuarios, contenido, EPG y suscripciones</span>
+            <span>Panel administrativo para planes, dispositivos, estadisticas y contenido</span>
+            <span>Distribucion por CDN con Origin protegido y URLs firmadas</span>
           </div>
           <div class="metrics">
             <div>
-              <strong>24/7</strong>
-              <span>operacion digital</span>
+              <strong>CDN</strong>
+              <span>distribucion eficiente</span>
             </div>
             <div>
               <strong>API</strong>
-              <span>first architecture</span>
+              <span>middleware central</span>
             </div>
             <div>
-              <strong>UX</strong>
-              <span>premium by default</span>
+              <strong>JWT</strong>
+              <span>seguridad de acceso</span>
             </div>
+          </div>
+        </div>
+        <div class="newtv-architecture">
+          <article class="architecture-panel">
+            <h3>Arquitectura operativa</h3>
+            <div class="architecture-flow" aria-label="Flujo de arquitectura NewTV">
+              <div class="flow-node">
+                <strong>Usuario</strong>
+                <span>App, TV o web</span>
+              </div>
+              <div class="flow-arrow"><span>-></span></div>
+              <div class="flow-node">
+                <strong>NewTV App</strong>
+                <span>Experiencia cliente</span>
+              </div>
+              <div class="flow-arrow"><span>-></span></div>
+              <div class="flow-node">
+                <strong>Middleware</strong>
+                <span>Login, perfiles, planes, tokens</span>
+              </div>
+              <div class="flow-arrow"><span>-></span></div>
+              <div class="flow-node">
+                <strong>CDN</strong>
+                <span>Cache, baja latencia, proteccion</span>
+              </div>
+              <div class="flow-arrow"><span>-></span></div>
+              <div class="flow-node">
+                <strong>Origin</strong>
+                <span>Fuente privada del contenido</span>
+              </div>
+            </div>
+          </article>
+          <article class="security-panel">
+            <h3>Seguridad y control</h3>
+            <div class="security-grid">
+              <div>
+                <strong>Streams protegidos</strong>
+                <span>Tokens temporales, URLs firmadas, control por dispositivo e IP opcional.</span>
+              </div>
+              <div>
+                <strong>Infraestructura blindada</strong>
+                <span>Firewall, CDN Shield, proteccion DDoS y rate limiting.</span>
+              </div>
+              <div>
+                <strong>Usuarios seguros</strong>
+                <span>HTTPS obligatorio, JWT y contrasenas cifradas para el acceso.</span>
+              </div>
+            </div>
+          </article>
+          <div class="tech-stack" aria-label="Tecnologias sugeridas para NewTV">
+            <span>Python</span>
+            <span>Flask</span>
+            <span>Gunicorn</span>
+            <span>PostgreSQL</span>
+            <span>Redis</span>
+            <span>Cloudflare</span>
+            <span>Bunny CDN</span>
+            <span>CloudFront</span>
+            <span>HLS</span>
+            <span>M3U8</span>
           </div>
         </div>
       </section>
@@ -982,7 +1234,7 @@
         context.setTransform(ratio, 0, 0, ratio, 0, 0);
         gradient = context.createLinearGradient(0, 0, width, height);
         gradient.addColorStop(0, "rgba(245, 247, 250, 0.04)");
-        gradient.addColorStop(0.42, "rgba(127, 135, 145, 0.12)");
+        gradient.addColorStop(0.42, "rgba(62, 133, 226, 0.14)");
         gradient.addColorStop(1, "rgba(255, 255, 255, 0.05)");
       }
 
@@ -1013,7 +1265,7 @@
           const y = height * (0.45 + Math.cos(tick * 1.35 + i) * 0.08);
           const ring = context.createRadialGradient(x, y, 0, x, y, radius);
           ring.addColorStop(0, `rgba(255,255,255,${0.085 - i * 0.012})`);
-          ring.addColorStop(0.58, "rgba(134, 141, 152, 0.025)");
+          ring.addColorStop(0.58, "rgba(90, 167, 255, 0.035)");
           ring.addColorStop(1, "rgba(0,0,0,0)");
           context.fillStyle = ring;
           context.beginPath();
