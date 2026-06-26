@@ -545,11 +545,86 @@
         margin-top: 1.4rem;
       }
 
-      .product-features span {
-        padding: 0.9rem 1rem;
+      .product-features span,
+      .capability-card {
+        position: relative;
+        overflow: hidden;
+        padding: 1rem;
         color: rgba(245, 247, 250, 0.78);
         border: 1px solid var(--line);
+        border-radius: 8px;
         background: rgba(91, 159, 255, 0.07);
+      }
+
+      .capability-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.8rem;
+        margin-top: 1.35rem;
+      }
+
+      .capability-card {
+        min-height: 9.25rem;
+        display: grid;
+        align-content: space-between;
+        transition:
+          transform 180ms ease,
+          border-color 180ms ease,
+          background 180ms ease;
+      }
+
+      .capability-card:hover {
+        transform: translateY(-0.28rem);
+        border-color: rgba(143, 198, 255, 0.42);
+        background: rgba(91, 159, 255, 0.12);
+      }
+
+      .capability-card strong {
+        display: block;
+        font-size: clamp(1.55rem, 3vw, 2.25rem);
+        line-height: 1;
+        color: #ffffff;
+      }
+
+      .capability-card span {
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .product-summary {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.75rem;
+        margin-top: 1.35rem;
+      }
+
+      .summary-tile {
+        min-height: 5.8rem;
+        display: grid;
+        place-items: center;
+        padding: 0.9rem;
+        text-align: center;
+        border: 1px solid rgba(139, 183, 235, 0.2);
+        border-radius: 8px;
+        background: rgba(4, 10, 22, 0.58);
+      }
+
+      .summary-tile strong,
+      .summary-tile span {
+        display: block;
+      }
+
+      .summary-tile strong {
+        font-size: clamp(1.45rem, 3vw, 2.1rem);
+        color: var(--blue-soft);
+      }
+
+      .summary-tile span {
+        margin-top: 0.3rem;
+        color: var(--muted);
+        font-size: 0.78rem;
+        letter-spacing: 0.08rem;
+        text-transform: uppercase;
       }
 
       .platform-pills {
@@ -668,8 +743,11 @@
       }
 
       .security-grid div {
-        min-height: 8rem;
+        min-height: 9rem;
+        display: grid;
+        align-content: center;
         padding: 0.95rem;
+        text-align: center;
         border: 1px solid rgba(139, 183, 235, 0.18);
         border-radius: 8px;
         background: rgba(255, 255, 255, 0.04);
@@ -678,6 +756,8 @@
       .security-grid strong {
         display: block;
         margin-bottom: 0.55rem;
+        color: #ffffff;
+        font-size: clamp(1.15rem, 2vw, 1.45rem);
       }
 
       .security-grid span {
@@ -803,6 +883,8 @@
 
         .service-grid,
         .steps,
+        .capability-grid,
+        .product-summary,
         .security-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
@@ -867,7 +949,9 @@
         .steps,
         .metrics,
         .product-features,
-        .security-grid {
+        .security-grid,
+        .capability-grid,
+        .product-summary {
           grid-template-columns: 1fr;
         }
 
@@ -1075,8 +1159,7 @@
           <p class="section-kicker">Producto destacado</p>
           <h2>NewTV, una plataforma IPTV moderna, escalable y segura.</h2>
           <p>
-            NewTV integra television en vivo, peliculas, series, Catch-Up, perfiles, favoritos, busqueda y guia EPG
-            sobre una arquitectura preparada para operar desde cientos hasta miles de usuarios concurrentes.
+            App, panel, API y distribucion de contenido conectados en una sola operacion.
           </p>
           <div class="platform-pills" aria-label="Plataformas soportadas por NewTV">
             <span>Android</span>
@@ -1086,24 +1169,36 @@
             <span>Smart TV</span>
             <span>iOS futuro</span>
           </div>
-          <div class="product-features">
-            <span>Canales en vivo, VOD, peliculas, series y replay TV</span>
-            <span>Middleware con API REST para usuarios, contenido, EPG y suscripciones</span>
-            <span>Panel administrativo para planes, dispositivos, estadisticas y contenido</span>
-            <span>Distribucion por CDN con Origin protegido y URLs firmadas</span>
-          </div>
-          <div class="metrics">
-            <div>
+          <div class="capability-grid" aria-label="Capacidades principales de NewTV">
+            <div class="capability-card">
+              <strong>Live</strong>
+              <span>Canales, EPG y replay TV.</span>
+            </div>
+            <div class="capability-card">
+              <strong>VOD</strong>
+              <span>Peliculas, series y trailers.</span>
+            </div>
+            <div class="capability-card">
+              <strong>Admin</strong>
+              <span>Usuarios, planes y dispositivos.</span>
+            </div>
+            <div class="capability-card">
               <strong>CDN</strong>
-              <span>distribucion eficiente</span>
+              <span>Streams protegidos y baja latencia.</span>
             </div>
-            <div>
+          </div>
+          <div class="product-summary" aria-label="Resumen tecnico NewTV">
+            <div class="summary-tile">
               <strong>API</strong>
-              <span>middleware central</span>
+              <span>REST</span>
             </div>
-            <div>
+            <div class="summary-tile">
               <strong>JWT</strong>
-              <span>seguridad de acceso</span>
+              <span>Auth</span>
+            </div>
+            <div class="summary-tile">
+              <strong>HLS</strong>
+              <span>Stream</span>
             </div>
           </div>
         </div>
@@ -1141,16 +1236,16 @@
             <h3>Seguridad y control</h3>
             <div class="security-grid">
               <div>
-                <strong>Streams protegidos</strong>
-                <span>Tokens temporales, URLs firmadas, control por dispositivo e IP opcional.</span>
+                <strong>Tokens</strong>
+                <span>Accesos temporales y URLs firmadas.</span>
               </div>
               <div>
-                <strong>Infraestructura blindada</strong>
-                <span>Firewall, CDN Shield, proteccion DDoS y rate limiting.</span>
+                <strong>Shield</strong>
+                <span>Firewall, DDoS y rate limiting.</span>
               </div>
               <div>
-                <strong>Usuarios seguros</strong>
-                <span>HTTPS obligatorio, JWT y contrasenas cifradas para el acceso.</span>
+                <strong>HTTPS</strong>
+                <span>JWT y contrasenas cifradas.</span>
               </div>
             </div>
           </article>
