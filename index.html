@@ -68,11 +68,39 @@
         border-bottom: 1px solid var(--line);
       }
 
-      .metal-canvas {
+      .hero-ambient {
         position: absolute;
         inset: 0;
         z-index: -3;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .hero-ambient::before,
+      .hero-ambient::after {
+        content: "";
+        position: absolute;
+        width: min(64rem, 86vw);
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(85, 158, 255, 0.2), rgba(85, 158, 255, 0.08) 36%, transparent 68%);
         opacity: 0.72;
+        transform: translate3d(0, 0, 0);
+        will-change: transform;
+      }
+
+      .hero-ambient::before {
+        top: -28rem;
+        left: 50%;
+        translate: -50% 0;
+        animation: ambientDrift 18s ease-in-out infinite;
+      }
+
+      .hero-ambient::after {
+        right: -24rem;
+        bottom: -26rem;
+        opacity: 0.42;
+        animation: ambientDrift 24s ease-in-out infinite reverse;
       }
 
       .hero::before {
@@ -197,7 +225,6 @@
         background-size: 240% 100%;
         -webkit-background-clip: text;
         color: transparent;
-        animation: chrome 5s ease-in-out infinite;
       }
 
       .lead {
@@ -269,6 +296,8 @@
         width: min(1180px, calc(100% - 2rem));
         margin: 0 auto;
         padding: clamp(4.8rem, 10vw, 8rem) 0;
+        content-visibility: auto;
+        contain-intrinsic-size: 1px 720px;
       }
 
       .intro {
@@ -362,6 +391,8 @@
         background:
           linear-gradient(90deg, rgba(69, 137, 226, 0.16), transparent 44%),
           linear-gradient(145deg, #07101f 0%, #0b1730 48%, #030712 100%);
+        content-visibility: auto;
+        contain-intrinsic-size: 1px 980px;
       }
 
       .product-visual {
@@ -382,7 +413,6 @@
         box-shadow:
           inset 0 0 0 1px rgba(255, 255, 255, 0.06),
           0 34px 120px rgba(0, 0, 0, 0.48);
-        animation: blueBreath 6s ease-in-out infinite;
         isolation: isolate;
       }
 
@@ -807,6 +837,8 @@
         background:
           linear-gradient(110deg, rgba(90, 167, 255, 0.16), transparent 55%),
           #030712;
+        content-visibility: auto;
+        contain-intrinsic-size: 1px 420px;
       }
 
       .contact > div {
@@ -825,16 +857,6 @@
         min-width: min(100%, 28rem);
       }
 
-      @keyframes chrome {
-        0%,
-        100% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-      }
-
       @keyframes rise {
         from {
           opacity: 0;
@@ -846,17 +868,13 @@
         }
       }
 
-      @keyframes blueBreath {
+      @keyframes ambientDrift {
         0%,
         100% {
-          box-shadow:
-            inset 0 0 0 1px rgba(255, 255, 255, 0.06),
-            0 34px 120px rgba(0, 0, 0, 0.48);
+          transform: translate3d(-1.2rem, 0, 0) scale(1);
         }
         50% {
-          box-shadow:
-            inset 0 0 0 1px rgba(142, 197, 255, 0.12),
-            0 34px 130px rgba(72, 142, 236, 0.2);
+          transform: translate3d(1.2rem, 1rem, 0) scale(1.04);
         }
       }
 
@@ -869,7 +887,7 @@
           scroll-behavior: auto !important;
         }
 
-        .metal-canvas {
+        .hero-ambient {
           display: none;
         }
       }
@@ -920,7 +938,7 @@
           padding-top: 6rem;
         }
 
-        .metal-canvas {
+        .hero-ambient {
           opacity: 0.35;
         }
 
@@ -1018,7 +1036,7 @@
   <body>
     <main>
       <section class="hero" id="inicio">
-        <canvas class="metal-canvas" id="metalCanvas" aria-hidden="true"></canvas>
+        <div class="hero-ambient" aria-hidden="true"></div>
         <nav class="nav" aria-label="Principal">
           <a class="brand" href="#inicio" aria-label="Arasaka Corp inicio">
             <img src="public/arasaka-logo.png" alt="" />
@@ -1306,88 +1324,5 @@
       </section>
     </main>
 
-    <script>
-      const canvas = document.getElementById("metalCanvas");
-      const context = canvas.getContext("2d");
-      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      let animationFrame;
-      let width = 0;
-      let height = 0;
-      let tick = 0;
-      let lastFrame = 0;
-      let gradient;
-      const targetFrameMs = window.innerWidth < 700 ? 80 : 42;
-
-      function resize() {
-        const ratio = Math.min(window.devicePixelRatio || 1, window.innerWidth < 700 ? 1 : 1.25);
-        width = window.innerWidth;
-        height = window.innerHeight;
-        canvas.width = width * ratio;
-        canvas.height = height * ratio;
-        canvas.style.width = `${width}px`;
-        canvas.style.height = `${height}px`;
-        context.setTransform(ratio, 0, 0, ratio, 0, 0);
-        gradient = context.createLinearGradient(0, 0, width, height);
-        gradient.addColorStop(0, "rgba(245, 247, 250, 0.04)");
-        gradient.addColorStop(0.42, "rgba(62, 133, 226, 0.14)");
-        gradient.addColorStop(1, "rgba(255, 255, 255, 0.05)");
-      }
-
-      function paintBackground() {
-        context.clearRect(0, 0, width, height);
-        context.fillStyle = gradient;
-        context.fillRect(0, 0, width, height);
-      }
-
-      function draw(now = 0) {
-        if (document.hidden) {
-          animationFrame = window.requestAnimationFrame(draw);
-          return;
-        }
-
-        if (now - lastFrame < targetFrameMs) {
-          animationFrame = window.requestAnimationFrame(draw);
-          return;
-        }
-
-        lastFrame = now;
-        tick += 0.012;
-        paintBackground();
-
-        for (let i = 0; i < 4; i += 1) {
-          const radius = Math.max(width, height) * (0.2 + i * 0.035);
-          const x = width * (0.48 + Math.sin(tick + i) * 0.12);
-          const y = height * (0.45 + Math.cos(tick * 1.35 + i) * 0.08);
-          const ring = context.createRadialGradient(x, y, 0, x, y, radius);
-          ring.addColorStop(0, `rgba(255,255,255,${0.085 - i * 0.012})`);
-          ring.addColorStop(0.58, "rgba(90, 167, 255, 0.035)");
-          ring.addColorStop(1, "rgba(0,0,0,0)");
-          context.fillStyle = ring;
-          context.beginPath();
-          context.arc(x, y, radius, 0, Math.PI * 2);
-          context.fill();
-        }
-
-        context.strokeStyle = "rgba(255,255,255,0.15)";
-        context.lineWidth = 1;
-        for (let i = 0; i < 10; i += 1) {
-          const y = ((i * 126 + tick * 700) % (height + 180)) - 90;
-          context.beginPath();
-          context.moveTo(width * 0.08, y);
-          context.bezierCurveTo(width * 0.34, y - 60, width * 0.62, y + 80, width * 0.94, y - 20);
-          context.stroke();
-        }
-
-        animationFrame = window.requestAnimationFrame(draw);
-      }
-
-      resize();
-      paintBackground();
-      if (!reduceMotion) {
-        draw();
-      }
-      window.addEventListener("resize", resize);
-      window.addEventListener("beforeunload", () => window.cancelAnimationFrame(animationFrame));
-    </script>
   </body>
 </html>
