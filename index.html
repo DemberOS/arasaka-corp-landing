@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Arasaka Corp desarrolla software a medida, plataformas digitales, automatizaciones y productos como NewTV."
+      content="GRUPO PARIA desarrolla software, plataformas IPTV, infraestructura digital y soluciones tecnologicas B2B."
     />
-    <title>Arasaka Corp | Software de alto rendimiento</title>
+    <title>GRUPO PARIA | Software, IPTV y Tech Solutions</title>
     <style>
       :root {
         color: #f5f7fa;
@@ -857,6 +857,290 @@
         min-width: min(100%, 28rem);
       }
 
+      .network-card {
+        width: min(540px, 100%);
+        margin: 2.4rem auto 0;
+        padding: 1.1rem;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.78);
+        box-shadow: 0 24px 80px rgba(7, 24, 39, 0.08);
+      }
+
+      .network-line {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .network-line::before {
+        content: "";
+        position: absolute;
+        left: 12%;
+        right: 12%;
+        top: 1.15rem;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--blue), transparent);
+      }
+
+      .network-node {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: 0.45rem;
+        justify-items: center;
+        color: var(--muted);
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.08rem;
+        text-transform: uppercase;
+      }
+
+      .network-node::before {
+        content: "";
+        width: 2.3rem;
+        aspect-ratio: 1;
+        border: 0.45rem solid #ffffff;
+        border-radius: 50%;
+        background: var(--blue);
+        box-shadow: 0 0 0 1px rgba(11, 115, 232, 0.2), 0 12px 28px rgba(11, 115, 232, 0.22);
+      }
+
+      .footer-logo {
+        width: min(260px, 76vw);
+        height: auto;
+        display: block;
+        margin-bottom: 1.4rem;
+      }
+
+      /* GRUPO PARIA identity refresh */
+      :root {
+        --black: #071827;
+        --ink: #111827;
+        --panel: #ffffff;
+        --panel-soft: #f6f8fb;
+        --blue: #0b73e8;
+        --blue-soft: #e7f1ff;
+        --steel: #5b6472;
+        --silver: #071827;
+        --chrome: #0b73e8;
+        --line: #e6eaf0;
+        --muted: #5b6472;
+      }
+
+      body {
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 74% 2%, rgba(11, 115, 232, 0.11), transparent 25rem),
+          linear-gradient(180deg, #ffffff 0%, #f6f8fb 48%, #ffffff 100%);
+      }
+
+      .hero {
+        min-height: 90svh;
+        background:
+          linear-gradient(135deg, rgba(246, 248, 251, 0.9), rgba(255, 255, 255, 0.96)),
+          #ffffff;
+      }
+
+      .hero::before {
+        background:
+          linear-gradient(90deg, rgba(7, 24, 39, 0.045) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(7, 24, 39, 0.045) 1px, transparent 1px);
+      }
+
+      .hero::after {
+        background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.92));
+      }
+
+      .hero-ambient::before,
+      .hero-ambient::after {
+        background: radial-gradient(circle, rgba(11, 115, 232, 0.13), rgba(11, 115, 232, 0.04) 42%, transparent 70%);
+      }
+
+      .nav {
+        background: rgba(255, 255, 255, 0.82);
+        border-bottom: 1px solid rgba(230, 234, 240, 0.92);
+        box-shadow: 0 12px 36px rgba(7, 24, 39, 0.06);
+      }
+
+      .brand img {
+        width: clamp(8.8rem, 16vw, 12rem);
+        height: 3.2rem;
+        object-fit: contain;
+        filter: none;
+      }
+
+      .brand span {
+        display: none;
+      }
+
+      .nav-links {
+        color: #5b6472;
+      }
+
+      .nav-links a:hover {
+        color: var(--blue);
+      }
+
+      .mark {
+        width: clamp(17rem, 34vw, 29rem);
+        aspect-ratio: 923 / 420;
+        margin-bottom: 1.7rem;
+        filter: none;
+      }
+
+      .mark img {
+        mix-blend-mode: normal;
+      }
+
+      .eyebrow,
+      .section-kicker {
+        color: var(--blue);
+      }
+
+      h1 {
+        background: none;
+        color: var(--black);
+        font-size: clamp(2.8rem, 8vw, 7rem);
+        line-height: 0.94;
+      }
+
+      h2,
+      h3 {
+        color: var(--black);
+      }
+
+      .lead,
+      .intro > p,
+      .product-copy p,
+      .contact p,
+      .service-card p,
+      .steps span,
+      .security-grid span,
+      .capability-card span {
+        color: var(--muted);
+      }
+
+      .button {
+        border-radius: 8px;
+        border-color: var(--line);
+      }
+
+      .button.primary {
+        color: #ffffff;
+        border-color: var(--black);
+        background: var(--black);
+        box-shadow: 0 16px 36px rgba(7, 24, 39, 0.14);
+      }
+
+      .button.primary:hover {
+        border-color: var(--blue);
+        background: var(--blue);
+      }
+
+      .button.ghost {
+        color: var(--black);
+        background: #ffffff;
+      }
+
+      .ticker {
+        color: #7a8493;
+      }
+
+      .service-grid,
+      .metrics {
+        background: var(--line);
+        border-color: var(--line);
+      }
+
+      .service-card,
+      .steps div,
+      .summary-tile,
+      .flow-node,
+      .security-grid div,
+      .architecture-panel,
+      .security-panel,
+      .newtv-showcase {
+        background: #ffffff;
+        border-color: var(--line);
+        box-shadow: 0 18px 50px rgba(7, 24, 39, 0.06);
+      }
+
+      .service-card:hover {
+        background: #ffffff;
+        border-color: rgba(11, 115, 232, 0.32);
+      }
+
+      .service-icon {
+        color: #ffffff;
+        background: var(--blue);
+      }
+
+      .product-band {
+        background: linear-gradient(180deg, #f6f8fb, #ffffff);
+      }
+
+      .newtv-showcase::before {
+        background: radial-gradient(circle, rgba(11, 115, 232, 0.12), transparent 65%);
+      }
+
+      .newtv-shot {
+        background: #ffffff;
+        border-color: var(--line);
+      }
+
+      .newtv-shot figcaption {
+        background: rgba(7, 24, 39, 0.82);
+      }
+
+      .capability-card,
+      .product-features span {
+        background: #ffffff;
+      }
+
+      .capability-card strong,
+      .summary-tile strong,
+      .security-grid strong {
+        color: var(--black);
+      }
+
+      .platform-pills span,
+      .tech-stack span {
+        color: var(--black);
+        border-color: var(--line);
+        background: #ffffff;
+      }
+
+      .flow-arrow span {
+        background: #ffffff;
+      }
+
+      .contact {
+        background:
+          linear-gradient(135deg, #ffffff, #f6f8fb);
+        border-top: 1px solid var(--line);
+      }
+
+      .contact h2 {
+        color: var(--black);
+      }
+
+      .contact .section-kicker {
+        color: var(--blue);
+      }
+
+      .contact p {
+        color: var(--muted);
+      }
+
+      .contact .button.ghost {
+        color: var(--black);
+        background: #ffffff;
+        border-color: var(--line);
+      }
+
       @keyframes rise {
         from {
           opacity: 0;
@@ -1038,9 +1322,9 @@
       <section class="hero" id="inicio">
         <div class="hero-ambient" aria-hidden="true"></div>
         <nav class="nav" aria-label="Principal">
-          <a class="brand" href="#inicio" aria-label="Arasaka Corp inicio">
-            <img src="public/arasaka-logo.png" alt="" />
-            <span>Arasaka Corp</span>
+          <a class="brand" href="#inicio" aria-label="GRUPO PARIA inicio">
+            <img src="public/grupo-paria-logo.jpg" alt="" />
+            <span>GRUPO PARIA</span>
           </a>
           <div class="nav-links">
             <a href="#servicios">Servicios</a>
@@ -1051,66 +1335,73 @@
 
         <div class="hero-content">
           <div class="mark">
-            <img src="public/arasaka-logo.png" alt="Arasaka Corp" />
+            <img src="public/grupo-paria-logo.jpg" alt="GRUPO PARIA" />
           </div>
-          <p class="eyebrow">Software general, productos digitales y operaciones de alto rendimiento</p>
-          <h1>Arasaka Corp</h1>
+          <p class="eyebrow">Software / IPTV / Tech Solutions</p>
+          <h1>Soluciones tecnologicas para empresas que conectan el futuro</h1>
           <p class="lead">
-            Creamos sistemas precisos, veloces y elegantes para empresas que necesitan convertir ideas en
-            plataformas listas para crecer.
+            Desarrollamos software, plataformas IPTV e infraestructura digital para empresas de internet,
+            ISPs y negocios tecnologicos.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#contacto">Iniciar proyecto -></a>
-            <a class="button ghost" href="#newtv">Ver NewTV</a>
+            <a class="button primary" href="#contacto">Solicitar demo -></a>
+            <a class="button ghost" href="#servicios">Ver soluciones</a>
+          </div>
+          <div class="network-card" aria-label="Equipo y conectividad">
+            <div class="network-line">
+              <span class="network-node">Software</span>
+              <span class="network-node">IPTV</span>
+              <span class="network-node">Infraestructura</span>
+            </div>
           </div>
         </div>
 
         <div class="ticker" aria-label="Capacidades">
           <span>Web Apps</span>
-          <span>Mobile</span>
-          <span>Streaming</span>
-          <span>AI Automation</span>
-          <span>Cloud</span>
-          <span>DevOps</span>
+          <span>IPTV</span>
+          <span>ISPs</span>
+          <span>Automatizacion</span>
+          <span>Infraestructura</span>
+          <span>B2B</span>
         </div>
       </section>
 
       <section class="section intro">
         <div>
-          <p class="section-kicker">Ingenieria con acabado premium</p>
-          <h2>Construimos tecnologia que se siente tan pulida como un auto de lujo.</h2>
+          <p class="section-kicker">Equipo tecnico de 3 desarrolladores</p>
+          <h2>Construimos herramientas claras, estables y listas para operar.</h2>
         </div>
         <p>
-          Desde productos completos hasta modulos criticos, trabajamos estrategia, diseno, desarrollo e
-          infraestructura con una mirada obsesiva por velocidad, estabilidad y experiencia.
+          GRUPO PARIA combina desarrollo de software, IPTV, automatizacion e infraestructura para resolver
+          necesidades reales de empresas de internet y clientes B2B.
         </p>
       </section>
 
       <section class="section services" id="servicios">
         <div class="section-head">
           <p class="section-kicker">Servicios</p>
-          <h2>Del concepto a produccion.</h2>
+          <h2>Soluciones para operacion digital.</h2>
         </div>
         <div class="service-grid">
           <article class="service-card">
             <span class="service-icon">&lt;/&gt;</span>
             <h3>Software a medida</h3>
-            <p>Aplicaciones web, moviles y paneles internos construidos alrededor del flujo real de tu negocio.</p>
+            <p>Aplicaciones, paneles internos y sistemas web alineados a procesos reales de negocio.</p>
           </article>
           <article class="service-card">
             <span class="service-icon">TV</span>
-            <h3>Plataformas streaming</h3>
-            <p>Arquitectura, interfaces y operaciones para experiencias tipo NewTV con rendimiento estable.</p>
+            <h3>IPTV y streaming</h3>
+            <p>Arquitectura, middleware, paneles y distribucion para plataformas tipo NewTV.</p>
           </article>
           <article class="service-card">
             <span class="service-icon">AI</span>
-            <h3>Automatizacion inteligente</h3>
-            <p>Integraciones, procesos asistidos por IA y herramientas que reducen trabajo repetitivo.</p>
+            <h3>Automatizacion</h3>
+            <p>Integraciones, flujos operativos y herramientas para reducir trabajo repetitivo.</p>
           </article>
           <article class="service-card">
             <span class="service-icon">UP</span>
-            <h3>Infraestructura confiable</h3>
-            <p>Despliegues, observabilidad, seguridad y escalamiento para productos que no pueden fallar.</p>
+            <h3>Infraestructura digital</h3>
+            <p>Despliegues, seguridad, observabilidad y escalamiento para servicios B2B.</p>
           </article>
         </div>
       </section>
@@ -1177,7 +1468,8 @@
           <p class="section-kicker">Producto destacado</p>
           <h2>NewTV, una plataforma IPTV moderna, escalable y segura.</h2>
           <p>
-            App, panel, API y distribucion de contenido conectados en una sola operacion.
+            Producto propio de GRUPO PARIA: app, panel, API y distribucion de contenido conectados en una sola
+            operacion.
           </p>
           <div class="platform-pills" aria-label="Plataformas soportadas por NewTV">
             <span>Android</span>
@@ -1285,18 +1577,18 @@
       <section class="section process">
         <div class="section-head">
           <p class="section-kicker">Metodo</p>
-          <h2>Un proceso claro para productos ambiciosos.</h2>
+          <h2>Un proceso claro para soluciones empresariales.</h2>
         </div>
         <div class="steps">
           <div>
             <span class="service-icon">01</span>
             <strong>Arquitectura</strong>
-            <span>Definimos alcance, flujos, datos y la estructura tecnica del producto.</span>
+            <span>Definimos alcance, flujos, datos e infraestructura necesaria.</span>
           </div>
           <div>
             <span class="service-icon">02</span>
             <strong>Interfaz</strong>
-            <span>Disenamos una experiencia visual precisa, moderna y facil de operar.</span>
+            <span>Disenamos interfaces limpias, claras y faciles de operar.</span>
           </div>
           <div>
             <span class="service-icon">03</span>
@@ -1308,18 +1600,19 @@
 
       <section class="contact" id="contacto">
         <div>
+          <img class="footer-logo" src="public/grupo-paria-logo.jpg" alt="GRUPO PARIA" />
           <p class="section-kicker">Contacto</p>
-          <h2>Hablemos del sistema que quieres construir.</h2>
-          <p>Escribenos por WhatsApp o email. Arasaka Corp se encarga de convertir tu idea en software.</p>
+          <h2>Hablemos de la solucion que tu empresa necesita.</h2>
+          <p>Software / IPTV / Tech Solutions para empresas de internet, ISPs y clientes B2B.</p>
         </div>
         <div class="contact-actions">
           <a
             class="button primary"
-            href="https://wa.me/10000000000?text=Hola%20Arasaka%20Corp%2C%20quiero%20hablar%20sobre%20un%20proyecto"
+            href="https://wa.me/10000000000?text=Hola%20GRUPO%20PARIA%2C%20quiero%20hablar%20sobre%20un%20proyecto"
           >
             WhatsApp ->
           </a>
-          <a class="button ghost" href="mailto:contacto@arasakacorp.com">contacto@arasakacorp.com</a>
+          <a class="button ghost" href="mailto:contacto@grupoparia.com">contacto@grupoparia.com</a>
         </div>
       </section>
     </main>
