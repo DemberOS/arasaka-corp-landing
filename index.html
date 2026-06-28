@@ -628,6 +628,40 @@
         margin-top: 1.35rem;
       }
 
+      .benefit-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.75rem;
+        margin-top: 1.35rem;
+      }
+
+      .benefit-card {
+        min-height: 8.2rem;
+        padding: 1rem;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #ffffff;
+      }
+
+      .benefit-card strong {
+        display: block;
+        color: var(--black);
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .benefit-card span {
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .product-ctas {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1.35rem;
+      }
+
       .summary-tile {
         min-height: 5.8rem;
         display: grid;
@@ -1187,6 +1221,7 @@
         .steps,
         .capability-grid,
         .product-summary,
+        .benefit-grid,
         .security-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
@@ -1253,7 +1288,8 @@
         .product-features,
         .security-grid,
         .capability-grid,
-        .product-summary {
+        .product-summary,
+        .benefit-grid {
           grid-template-columns: 1fr;
         }
 
@@ -1466,110 +1502,125 @@
         </div>
         <div class="product-copy">
           <p class="section-kicker">Producto destacado</p>
-          <h2>NewTV, una plataforma IPTV moderna, escalable y segura.</h2>
+          <h2>Tu propia plataforma de TV online, segura, rapida y lista para escalar.</h2>
           <p>
-            Producto propio de GRUPO PARIA: app, panel, API y distribucion de contenido conectados en una sola
-            operacion.
+            NewTV+ convierte fuentes HLS/IPTV en una plataforma profesional con App, Middleware, CDN y Origin para
+            entregar television en vivo, canales premium y video protegido.
           </p>
           <div class="platform-pills" aria-label="Plataformas soportadas por NewTV">
             <span>Android</span>
-            <span>Android TV</span>
-            <span>Fire TV</span>
-            <span>Web</span>
-            <span>Smart TV</span>
-            <span>iOS futuro</span>
+            <span>Apple futuro</span>
+            <span>HLS / ABR</span>
+            <span>CDN propio</span>
+            <span>4 Mbps ready</span>
           </div>
           <div class="capability-grid" aria-label="Capacidades principales de NewTV">
             <div class="capability-card">
               <strong>Live</strong>
-              <span>Canales, EPG y replay TV.</span>
-            </div>
-            <div class="capability-card">
-              <strong>VOD</strong>
-              <span>Peliculas, series y trailers.</span>
-            </div>
-            <div class="capability-card">
-              <strong>Admin</strong>
-              <span>Usuarios, planes y dispositivos.</span>
+              <span>Streaming HLS para canales IPTV en vivo.</span>
             </div>
             <div class="capability-card">
               <strong>CDN</strong>
-              <span>Streams protegidos y baja latencia.</span>
+              <span>Cache, signed URLs y rutas internas.</span>
+            </div>
+            <div class="capability-card">
+              <strong>Origin</strong>
+              <span>Warm window, AES-128 y tokens internos.</span>
+            </div>
+            <div class="capability-card">
+              <strong>Zapping</strong>
+              <span>Prewarm para cambio de canal mas rapido.</span>
             </div>
           </div>
           <div class="product-summary" aria-label="Resumen tecnico NewTV">
             <div class="summary-tile">
-              <strong>API</strong>
-              <span>REST</span>
-            </div>
-            <div class="summary-tile">
-              <strong>JWT</strong>
-              <span>Auth</span>
-            </div>
-            <div class="summary-tile">
               <strong>HLS</strong>
-              <span>Stream</span>
+              <span>Live</span>
             </div>
+            <div class="summary-tile">
+              <strong>ABR</strong>
+              <span>Calidad</span>
+            </div>
+            <div class="summary-tile">
+              <strong>AES</strong>
+              <span>Proteccion</span>
+            </div>
+          </div>
+          <div class="product-ctas">
+            <a class="button primary" href="#contacto">Solicitar demo -></a>
+            <a class="button ghost" href="#newtv">Ver arquitectura</a>
           </div>
         </div>
         <div class="newtv-architecture">
           <article class="architecture-panel">
-            <h3>Arquitectura operativa</h3>
+            <h3>Arquitectura</h3>
             <div class="architecture-flow" aria-label="Flujo de arquitectura NewTV">
               <div class="flow-node">
-                <strong>Usuario</strong>
-                <span>App, TV o web</span>
-              </div>
-              <div class="flow-arrow"><span>-></span></div>
-              <div class="flow-node">
-                <strong>NewTV App</strong>
-                <span>Experiencia cliente</span>
+                <strong>App</strong>
+                <span>Catalogo, EPG y play URLs</span>
               </div>
               <div class="flow-arrow"><span>-></span></div>
               <div class="flow-node">
                 <strong>Middleware</strong>
-                <span>Login, perfiles, planes, tokens</span>
+                <span>Usuarios, sesiones y permisos</span>
               </div>
               <div class="flow-arrow"><span>-></span></div>
               <div class="flow-node">
                 <strong>CDN</strong>
-                <span>Cache, baja latencia, proteccion</span>
+                <span>Cache, firmas y prewarm</span>
               </div>
               <div class="flow-arrow"><span>-></span></div>
               <div class="flow-node">
                 <strong>Origin</strong>
-                <span>Fuente privada del contenido</span>
+                <span>Upstream HLS y segmentos recientes</span>
+              </div>
+              <div class="flow-arrow"><span>-></span></div>
+              <div class="flow-node">
+                <strong>Cliente</strong>
+                <span>Reproduccion estable</span>
               </div>
             </div>
           </article>
           <article class="security-panel">
-            <h3>Seguridad y control</h3>
+            <h3>Beneficios principales</h3>
             <div class="security-grid">
               <div>
-                <strong>Tokens</strong>
-                <span>Accesos temporales y URLs firmadas.</span>
+                <strong>Menos buffering</strong>
+                <span>Cache inteligente, stale fallback y prewarm dirigido.</span>
               </div>
               <div>
-                <strong>Shield</strong>
-                <span>Firewall, DDoS y rate limiting.</span>
+                <strong>Mas seguridad</strong>
+                <span>Signed URLs, tokens internos y red privada separada.</span>
               </div>
               <div>
-                <strong>HTTPS</strong>
-                <span>JWT y contrasenas cifradas.</span>
+                <strong>Produccion</strong>
+                <span>Rate limiting, TLS, metricas y perfiles de tuning.</span>
               </div>
             </div>
           </article>
+          <div class="benefit-grid" aria-label="Para quien es NewTV">
+            <div class="benefit-card">
+              <strong>Operadores IPTV</strong>
+              <span>Servicios que necesitan canales en vivo y control de reproduccion.</span>
+            </div>
+            <div class="benefit-card">
+              <strong>Proveedores OTT</strong>
+              <span>Plataformas que distribuyen video protegido con escalabilidad.</span>
+            </div>
+            <div class="benefit-card">
+              <strong>TV privada</strong>
+              <span>Empresas, comunidades y negocios con contenido propio.</span>
+            </div>
+          </div>
           <div class="tech-stack" aria-label="Tecnologias sugeridas para NewTV">
-            <span>Python</span>
-            <span>Flask</span>
-            <span>Gunicorn</span>
-            <span>PostgreSQL</span>
-            <span>Redis</span>
-            <span>Cloudflare</span>
-            <span>Bunny CDN</span>
-            <span>CloudFront</span>
             <span>HLS</span>
-            <span>M3U8</span>
+            <span>ABR</span>
+            <span>Signed URLs</span>
+            <span>AES-128</span>
+            <span>Redis cache</span>
+            <span>Media3 / ExoPlayer</span>
+            <span>SwiftUI futuro</span>
+            <span>AVPlayer futuro</span>
           </div>
         </div>
       </section>
